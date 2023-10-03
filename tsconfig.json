@@ -15,7 +15,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
-    "types": ["bun-types", "src/types"],
+    "types": ["bun-types", "./src/types/*"],
     "baseUrl": ".",
     "paths": {
       "@/commands/*": ["src/commands/*"],
