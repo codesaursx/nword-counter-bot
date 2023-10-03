@@ -5,7 +5,13 @@ import { TARGET_WORDS } from '@/constants/target-words.constants';
 
 import { commandRegister } from '@/registers/command.register';
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
+});
 
 client.commands = commandRegister();
 
