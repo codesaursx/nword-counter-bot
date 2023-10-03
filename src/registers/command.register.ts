@@ -9,7 +9,7 @@ export const commandRegister = () => {
   const commandsPath = path.join(import.meta.dir, '..', 'commands');
   const commandFiles = fs
     .readdirSync(commandsPath)
-    .filter(f => f.endsWith('.js'));
+    .filter(f => f.endsWith('.ts'));
 
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
