@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 
-import { CommandEntity } from '../entities/command.entity';
+import { CommandEntity } from '@/entities/command.entity';
 
 const command = new CommandEntity(
   new SlashCommandBuilder()

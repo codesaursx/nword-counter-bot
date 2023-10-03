@@ -1,6 +1,6 @@
 import { REST, Routes } from 'discord.js';
-import { CLIENT_ID, DISCORD_TOKEN } from '../constants/config.constants';
-import { commandRegister } from '../registers/command.register';
+import { CLIENT_ID, DISCORD_TOKEN } from '@/constants/config.constants';
+import { commandRegister } from '@/registers/command.register';
 
 const bootstrap = async () => {
   const rest = new REST().setToken(DISCORD_TOKEN);

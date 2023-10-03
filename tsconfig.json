@@ -15,6 +15,15 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
-    "types": ["bun-types", "src/types"]
+    "types": ["bun-types", "src/types"],
+    "baseUrl": ".",
+    "paths": {
+      "@/commands/*": ["src/commands/*"],
+      "@/constants/*": ["src/constants/*"],
+      "@/deploys/*": ["src/deploys/*"],
+      "@/entities/*": ["src/entities/*"],
+      "@/registers/*": ["src/registers/*"],
+      "@/types/*": ["src/types/*"]
+    }
   }
 }
