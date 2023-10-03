@@ -23,7 +23,9 @@
       "@/deploys/*": ["src/deploys/*"],
       "@/entities/*": ["src/entities/*"],
       "@/registers/*": ["src/registers/*"],
-      "@/types/*": ["src/types/*"]
+      "@/services": ["src/services/index"],
+      "@/types/*": ["src/types/*"],
+      "@/utils/*": ["src/utils/*"]
     }
   }
 }

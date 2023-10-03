@@ -1,17 +1,13 @@
-import { Client, Events, GatewayIntentBits } from 'discord.js';
+import { Events } from 'discord.js';
 
 import { DISCORD_TOKEN } from '@/constants/config.constants';
 import { TARGET_WORDS } from '@/constants/target-words.constants';
+import { client } from '@/constants/client.constants';
+
+import { TrackerService } from '@/services';
 
 import { commandRegister } from '@/registers/command.register';
-
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ]
-});
+import { getWordsOccurrences } from '@/utils/get-words-occurrences.util';
 
 client.commands = commandRegister();
 
@@ -46,11 +42,21 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 client.on(Events.MessageCreate, async message => {
-  const text = message.content;
-  const regex = new RegExp(TARGET_WORDS.join('|'), 'gi');
-  const matches = text.match(regex);
+  if (!message.inGuild()) return;
 
-  message.reply(`This text includes ${matches} N-Words`);
+  const content = message.content;
+  const matches = getWordsOccurrences(content.toLowerCase(), TARGET_WORDS);
+
+  const needCountUpdate = matches > 0;
+  if (needCountUpdate) {
+    const userId = message.author.id;
+    const guildId = message.guildId;
+
+    await TrackerService.upsert(userId, guildId, matches);
+  }
+
+  // TODO: Reply messages that contains n-words?
+  console.log(`This text includes ${matches} N-Words`);
 });
 
 client.login(DISCORD_TOKEN);
