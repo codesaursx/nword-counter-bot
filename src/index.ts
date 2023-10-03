@@ -40,7 +40,11 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 client.on(Events.MessageCreate, async message => {
-  console.log(TARGET_WORDS);
+  const text = message.content;
+  const regex = new RegExp(TARGET_WORDS.join('|'), 'gi');
+  const matches = text.match(regex);
+
+  console.log('N-WORDS PER MESSAGE', matches);
 });
 
 client.login(DISCORD_TOKEN);
