@@ -44,7 +44,7 @@ client.on(Events.MessageCreate, async message => {
   const regex = new RegExp(TARGET_WORDS.join('|'), 'gi');
   const matches = text.match(regex);
 
-  console.log('N-WORDS PER MESSAGE', matches);
+  message.reply(`This text includes ${matches} N-Words`);
 });
 
 client.login(DISCORD_TOKEN);
