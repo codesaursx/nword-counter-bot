@@ -1,1 +1,1 @@
-const targetWords = [String.fromCharCode(110, 105, 103, 103, 97)];
+export const TARGET_WORDS = [String.fromCharCode(110, 105, 103, 103, 97)];

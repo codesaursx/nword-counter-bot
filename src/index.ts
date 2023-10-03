@@ -1,6 +1,8 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 
 import { DISCORD_TOKEN } from '@/constants/config.constants';
+import { TARGET_WORDS } from '@/constants/target-words.constants';
+
 import { commandRegister } from '@/registers/command.register';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -37,6 +39,8 @@ client.on(Events.InteractionCreate, async interaction => {
   }
 });
 
-client.on(Events.MessageCreate, async message => {});
+client.on(Events.MessageCreate, async message => {
+  console.log(TARGET_WORDS);
+});
 
 client.login(DISCORD_TOKEN);
