@@ -1,11 +1,8 @@
-import {
-  CacheType,
-  ChatInputCommandInteraction,
-  SlashCommandBuilder
-} from 'discord.js';
+import { SlashCommandBuilder } from 'discord.js';
+
 import { CommandEntity } from '../entities/command.entity';
 
-export default new CommandEntity(
+const command = new CommandEntity(
   new SlashCommandBuilder()
     .setName('ping')
     .setDescription('Replies with Pong!'),
@@ -13,3 +10,5 @@ export default new CommandEntity(
     await interaction.reply('Pong!');
   }
 );
+
+export default command;

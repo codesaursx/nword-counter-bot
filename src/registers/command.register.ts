@@ -13,9 +13,9 @@ export const commandRegister = () => {
 
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
-    const command: CommandEntity = require(filePath);
+    const command: CommandEntity = require(filePath).default;
 
-    if ('properties' in command && 'execute' in command) {
+    if ('data' in command && 'execute' in command) {
       commands.set(command.data.name, command);
     } else
       console.log(
