@@ -1,15 +1,23 @@
-# nword-counter-bot
+# @CodesaursX/nword-counter-bot
 
-To install dependencies:
+A discord bot to save how many times a user says the N-Word in a server, and display the total via command.
+
+## Run Locally
+
+> To run this project locally, you have to install Bun in your machine.
+
+First, install the dependencies of the project with the following command:
 
 ```bash
 bun install
 ```
 
-To run:
+Then, create a `.env` file with the values showed in the `.env.example` file.
 
-```bash
-bun run index.ts
+Run the project by executing the following command:
+
+```sh
+bun start
+# or
+bun start:dev
 ```
-
-This project was created using `bun init` in bun v1.0.3. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
