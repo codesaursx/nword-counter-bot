@@ -6,7 +6,7 @@ class TrackerService {
     await this.prisma.$connect();
 
     const data = await this.prisma.countTracker.findUnique({
-      where: { userId, guildId }
+      where: { userId_guildId: { userId, guildId } }
     });
 
     await this.prisma.$disconnect();
@@ -20,7 +20,7 @@ class TrackerService {
     let record;
     if (data) {
       record = await this.prisma.countTracker.update({
-        where: { userId, guildId },
+        where: { userId_guildId: { userId, guildId } },
         data: { count: data.count + count }
       });
     } else {
