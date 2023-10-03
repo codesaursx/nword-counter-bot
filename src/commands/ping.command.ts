@@ -4,10 +4,10 @@ import { CommandEntity } from '../entities/command.entity';
 
 const command = new CommandEntity(
   new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('Replies with Pong!'),
+    .setName('stats')
+    .setDescription('Shows the count of the user saying the N-Word.'),
   async interaction => {
-    await interaction.reply('Pong!');
+    await interaction.reply('[user] Has said the N-Word [totalCount] times.');
   }
 );
 
