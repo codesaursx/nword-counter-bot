@@ -26,12 +26,14 @@ const command = new CommandEntity(
     const data = await TrackerService.findOne(target.id, interaction.guildId);
 
     if (!data) {
-      await interaction.reply(`<@${target.id}> is a clean as a white man.`);
+      await interaction.reply(`<@${target.id}> is clean as a white man.`);
       return;
     }
 
     await interaction.reply(
-      `<@${target.id}> Has said the N-Word ${data.count} times.`
+      `<@${
+        target.id
+      }> Has said the N-Word ${data.count.toLocaleString()} times.`
     );
   }
 );
