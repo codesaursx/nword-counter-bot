@@ -1,7 +1,7 @@
 FROM oven/bun
 
 WORKDIR /app
-COPY bun.lockb
+COPY bun.lockb .
 RUN bun install 
 RUN bun run prisma generate
 COPY . . 
