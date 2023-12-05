@@ -1,13 +1,24 @@
-FROM oven/bun
+FROM oven/bun:slim as base
+WORKDIR /usr/src/app
 
-WORKDIR /app
-COPY package.json .
-COPY bun.lockb .
+FROM base AS install
+ARG NODE_VERSION=20
+RUN apt update \
+    && apt install -y curl
+RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n \
+    && bash n $NODE_VERSION \
+    && rm n \
+    && npm install -g n
+
+COPY ./package.json ./bun.lockb ./
+COPY ./src ./
+COPY ./prisma ./prisma
 RUN bun install --production
-COPY . . 
-RUN bun run prisma generate
+RUN bun prisma generate
+
+FROM base AS release
+COPY --from=install /usr/src/app/ .
 
 ENV NODE_ENV production
 
-CMD ["bun","start"]
-
+CMD [ "bun", "start" ]
