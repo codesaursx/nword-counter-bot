@@ -1,9 +1,11 @@
 FROM oven/bun
 
 WORKDIR /app
-COPY package*.json bun.lockb ./
-RUN bun install 
-RUN bun run prisma generate
+COPY package.json .
+COPY bun.lockb .
+COPY ./prisma ./prisma
+RUN bun install --production
+RUN bun prisma generate
 COPY . . 
 
 ENV NODE_ENV production
