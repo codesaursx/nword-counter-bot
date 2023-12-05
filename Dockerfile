@@ -20,5 +20,4 @@ FROM base AS release
 COPY --from=install /usr/src/app/ .
 
 ENV NODE_ENV production
-
 CMD [ "bun", "start" ]
