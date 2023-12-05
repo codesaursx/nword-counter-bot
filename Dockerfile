@@ -5,7 +5,7 @@ COPY package.json .
 COPY bun.lockb .
 COPY ./prisma ./prisma
 RUN bun install --production
-RUN bun prisma generate
+RUN npx prisma generate
 COPY . . 
 
 ENV NODE_ENV production
